@@ -1,6 +1,10 @@
 # Author: Jason Smith
 # August 21, 2022
 
+import json
+import tkinter
+from tkinter import filedialog
+
 
 class Main:
     """Represents an instance of the application."""
@@ -8,7 +12,8 @@ class Main:
     def __init__(self):
         # has a catalog
         # has a card
-        pass
+        self._path_to_catalog = ''
+        # self.catalog = Catalog()
         
     def startup_menu(self):
         """Menu dispalyed on startup."""
@@ -77,12 +82,14 @@ class Main:
             self.open_catalog_menu()
             
     def create_new_catalog(self):
-        """This creates a new catalog (.txt) file."""
-        pass
+        """This creates a new catalog file."""
+        with open('card_catalog.json', 'w') as outfile:
+            outfile.write('')
     
     def open_catalog(self):
         """This opens an existing catalog file for editing."""
-        pass
+        tkinter.Tk().withdraw()  # keeps empty tkinter window from displaying
+        self._path_to_catalog = filedialog.askopenfilename()
     
     def close_catalog(self):
         """Closes the currently open catalog file."""
